@@ -7,11 +7,23 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
-    public partial class _Default : Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        public void MainButton_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("/IngresoVoucher.aspx");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
