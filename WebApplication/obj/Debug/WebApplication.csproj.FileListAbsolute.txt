@@ -54,3 +54,9 @@ E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\obj\Debug\WebApplication.cspr
 E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\obj\Debug\WebApplication.csproj.CopyComplete
 E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\obj\Debug\WebApplication.dll
 E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\obj\Debug\WebApplication.pdb
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\AccesoDatos.dll
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\Dominio.dll
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\Negocio.dll
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\AccesoDatos.pdb
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\Dominio.pdb
+E:\Proyectos [GIT]\TP3\tp3-Espinola\WebApplication\bin\Negocio.pdb

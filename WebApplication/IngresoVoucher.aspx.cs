@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AccesoDatos;
+using Negocio;
+using Dominio;
 
 namespace WebApplication
 {
@@ -15,7 +18,28 @@ namespace WebApplication
         }
         protected void btnVerificarVoucher_OnClick(object sender, EventArgs e)
         {
-            Response.Write("<script>alert('Data inserted successfully')</script>");
+            List<Voucher> listaVoucher;
+            try
+            {
+            VoucherNegocio voucherNeg = new VoucherNegocio();
+            Voucher voucher;
+            listaVoucher = voucherNeg.listar();
+                voucher = listaVoucher.Find(X => X.Codigo == txtIngresoVoucher.Text);
+                if (voucher != null)
+                {
+                    Response.Write("<script>alert('Data inserted successfully')</script>");
+                    Response.Redirect("Premios.aspx");
+                }
+                else
+                {
+                    Session["Error" + Session.SessionID] = "El voucher ingresado no existe";
+                    Response.Redirect("Error.aspx");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
