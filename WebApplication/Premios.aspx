@@ -12,7 +12,7 @@
                 <h5 class="card-title"><% = item.Titulo %></h5>
                 <p class="card-text"><% = item.Descripcion %></p>
             </div>
-            <a class="btn btn-primary" href="PokemonDetail.aspx?idpkm=<% = item.ID.ToString() %>">Seleccionar</a>
+            <a class="btn btn-primary" href="DetallesCliente.aspx?idpkm=<% = item.ID.ToString() %>">Seleccionar</a>
         </div>
         <% } %>
     </div>

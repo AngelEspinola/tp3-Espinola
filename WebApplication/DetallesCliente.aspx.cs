@@ -11,7 +11,13 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+            if (!Page.IsValid)
+            return;
         }
     }
 }

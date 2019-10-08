@@ -4,3 +4,9 @@ E:\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.csprojAssemblyRefe
 E:\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 E:\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.dll
 E:\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.pdb
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\bin\Debug\Dominio.dll
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\bin\Debug\Dominio.pdb
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.dll
+C:\Proyectos\Proyectos [GIT]\TP3\tp3-Espinola\Dominio\obj\Debug\Dominio.pdb

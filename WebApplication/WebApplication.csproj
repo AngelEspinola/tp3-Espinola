@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="DetallesCliente.aspx" />
+    <Content Include="DetallesCliente.js" />
     <Content Include="Error.aspx" />
     <Content Include="IngresoVoucher.aspx" />
     <Content Include="Premios.aspx" />
