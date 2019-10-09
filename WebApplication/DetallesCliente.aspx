@@ -8,41 +8,42 @@
     <script src="DetallesCliente.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
-    <h1>Formulario Pokemon</h1>
+    <h1>Ingresa tus datos!</h1>
     
-
+    
+        <div class="form-group">
+            <label>DNI</label>
+            <asp:TextBox ID="txtDNI" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+            <asp:Button Text="Buscar"  CssClass="btn btn-info btn-lg" runat="server"  OnClick="BuscarCUIT"/>
+        </div>
         <div class="form-group">
             <label>Nombre</label>
             <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" />
         </div>
-        <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="txtDescripcion" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+    <div class="form-group">
+            <label>Apellido</label>
+            <asp:TextBox ID="txtApellido" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
         </div>
     <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox1" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+            <label>Email</label>
+            <asp:TextBox ID="txtEmail" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
         </div>
     <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox2" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+            <label>Direccion</label>
+            <asp:TextBox ID="txtDireccion" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
         </div>
     <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox3" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+            <label>Ciudad</label>
+            <asp:TextBox ID="txtCiudad" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
         </div>
     <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox4" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
+            <label>Codigo Postal</label>
+            <asp:TextBox ID="txtCodigoPostal" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
         </div>
     <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox5" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
-        </div>
-    <div class="form-group">
-            <label>Descripcion</label>
-            <asp:TextBox ID="TextBox6" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />
-        </div>
-    <asp:Button Text="Aceptar" ID="btnAceptar" autopostback="false"  OnClientClick="validar();return false;"  CssClass="btn btn-primary" runat="server" />
+            <label>Fecha de Registro</label>
+            <asp:TextBox ID="txtFechaRegistro" MaxLength="20" ClientIDMode="Static" CssClass="form-control" runat="server" />    
+    </div>
+    <asp:Button Text="Aceptar" ID="btnAceptar" autopostback="false"  OnClientClick="validar();return false;" OnClick ="CargarDatos"  CssClass="btn btn-primary" runat="server" />
 
 </asp:Content>

@@ -34,7 +34,7 @@ namespace WebApplication
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }
