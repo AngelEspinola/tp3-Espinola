@@ -52,8 +52,8 @@ namespace Negocio
                         voucher.IDProducto = Convert.ToInt32(lector["IdProducto"]);
 
                     if (!Convert.IsDBNull(lector["FechaRegistro"]))
-                    voucher.FechaRegistro = Convert.ToDateTime(lector["FechaRegistro"]);
-                    
+                        voucher.FechaRegistro = Convert.ToDateTime(lector["FechaRegistro"]);
+
                     listado.Add(voucher);
                 }
 
@@ -64,6 +64,37 @@ namespace Negocio
             {
                 throw ex;
             }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public void modificar(string voucher, string idCliente, int idProducto)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+            List<Voucher> listado = new List<Voucher>();
+            //PoderSecundarioNegocio poderSecundarioNegocio = new PoderSecundarioNegocio();
+            try
+            {
+                conexion.ConnectionString = AccesoDatosManager.cadenaConexion;
+                comando.CommandType = System.Data.CommandType.Text;
+                //MSF-20190420: agregué todos los datos del heroe. Incluso su universo, que lo traigo con join.
+                comando.CommandText = "UPDATE[TP_WEB].[dbo].[Vouchers] SET IdCliente = @idCliente, IdProducto = @idProducto WHERE[TP_WEB].[dbo].[Vouchers].CodigoVoucher = @Voucher";
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@idCliente", idCliente);
+                comando.Parameters.AddWithValue("@idProducto", idProducto);
+                comando.Parameters.AddWithValue("@Voucher", voucher);
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             finally
             {
                 conexion.Close();

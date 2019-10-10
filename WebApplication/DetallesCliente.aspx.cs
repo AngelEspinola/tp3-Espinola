@@ -20,6 +20,7 @@ namespace WebApplication
             ProductoNegocio negocio = new ProductoNegocio();
             List<Producto> listaProductos = negocio.listar();
             producto = listaProductos.Find(J => J.ID == productoID);
+            
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -67,6 +68,12 @@ namespace WebApplication
         }
         public void CargarDatos(object sender, EventArgs e)
         {
+            string voucher = Session["Voucher" + Session.SessionID].ToString();
+            VoucherNegocio negocioVoucher = new VoucherNegocio();
+            ClienteNegocio negocioCliente = new ClienteNegocio();
+            string idCliente = negocioCliente.traerIDCliente(txtDNI.Text);
+
+            negocioVoucher.modificar(voucher, idCliente, producto.ID);
             // CARGAR ID CLIENTE - ID PRODUCTO  - FECHA REGISTRO EN VOUCHER
         }
     }

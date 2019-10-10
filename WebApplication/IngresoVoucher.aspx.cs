@@ -27,7 +27,8 @@ namespace WebApplication
                 voucher = listaVoucher.Find(X => X.Codigo == txtIngresoVoucher.Text);
                 if (voucher != null)
                 {
-                    Response.Write("<script>alert('Data inserted successfully')</script>");
+                    Response.Write("<script>alert('Voucher verificado!')</script>");
+                    Session["Voucher" + Session.SessionID] = txtIngresoVoucher.Text;
                     Response.Redirect("Premios.aspx");
                 }
                 else

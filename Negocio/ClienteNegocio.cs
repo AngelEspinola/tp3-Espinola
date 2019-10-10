@@ -73,5 +73,42 @@ namespace Negocio
                 conexion.Close();
             }
         }
+
+        public string traerIDCliente(string DNI)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            string idCliente = null;
+            //PoderSecundarioNegocio poderSecundarioNegocio = new PoderSecundarioNegocio();
+            try
+            {
+                conexion.ConnectionString = AccesoDatosManager.cadenaConexion;
+                comando.CommandType = System.Data.CommandType.Text;
+                //MSF-20190420: agregué todos los datos del heroe. Incluso su universo, que lo traigo con join.
+                comando.CommandText = "SELECT [Id] FROM[TP_WEB].[dbo].[Clientes] WHERE[TP_WEB].[dbo].[Clientes].DNI = @DNI";
+                comando.Connection = conexion;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@DNI", DNI);
+                conexion.Open();
+                lector = comando.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    idCliente = lector["Id"].ToString();
+                }
+
+                return idCliente;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
     }
 }
