@@ -25,15 +25,19 @@ namespace WebApplication
             Voucher voucher;
             listaVoucher = voucherNeg.listar();
                 voucher = listaVoucher.Find(X => X.Codigo == txtIngresoVoucher.Text);
-                if (voucher != null)
+                if (voucher != null && voucher.Estado == false)
                 {
-                    Response.Write("<script>alert('Voucher verificado!')</script>");
                     Session["Voucher" + Session.SessionID] = txtIngresoVoucher.Text;
                     Response.Redirect("Premios.aspx");
                 }
-                else
+                else if (voucher == null)
                 {
-                    Session["Error" + Session.SessionID] = "El voucher ingresado no existe";
+                    Session["Error" + Session.SessionID] = "El voucher ingresado no existe! ¿Seguro que no lo ingresaste mal?";
+                    Response.Redirect("Error.aspx");
+                }
+                else if (voucher != null && voucher.Estado == true)
+                {
+                    Session["Error" + Session.SessionID] = "El voucher ingresado ya ha sido utilizado! :C";
                     Response.Redirect("Error.aspx");
                 }
             }

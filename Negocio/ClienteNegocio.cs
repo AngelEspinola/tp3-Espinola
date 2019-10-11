@@ -74,6 +74,41 @@ namespace Negocio
             }
         }
 
+        public void agregar(Cliente nuevoCliente)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+            //PoderSecundarioNegocio poderSecundarioNegocio = new PoderSecundarioNegocio();
+            try
+            {
+                conexion.ConnectionString = AccesoDatosManager.cadenaConexion;
+                comando.CommandType = System.Data.CommandType.Text;
+                //MSF-20190420: agregué todos los datos del heroe. Incluso su universo, que lo traigo con join.
+                comando.CommandText = "  INSERT INTO [TP_WEB].[dbo].[Clientes] (DNI,Nombre,Apellido,Email,Direccion,Ciudad,CodigoPostal,FechaRegistro) VALUES (@DNI,@Nombre,@Apellido,@Email,@Direccion,@Ciudad,@CodigoPostal,@FechaRegistro)";
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@DNI", nuevoCliente.DNI);
+                comando.Parameters.AddWithValue("@Nombre", nuevoCliente.Nombre.ToString());
+                comando.Parameters.AddWithValue("@Apellido", nuevoCliente.Apellido.ToString());
+                comando.Parameters.AddWithValue("@Email", nuevoCliente.Email.ToString());
+                comando.Parameters.AddWithValue("@Direccion", nuevoCliente.Direccion.ToString());
+                comando.Parameters.AddWithValue("@Ciudad", nuevoCliente.Ciudad.ToString());
+                comando.Parameters.AddWithValue("@CodigoPostal", nuevoCliente.CodigoPostal.ToString());
+                comando.Parameters.AddWithValue("@FechaRegistro", nuevoCliente.FechaRegistro);
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public string traerIDCliente(string DNI)
         {
             SqlConnection conexion = new SqlConnection();

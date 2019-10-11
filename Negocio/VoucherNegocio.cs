@@ -70,7 +70,7 @@ namespace Negocio
             }
         }
 
-        public void modificar(string voucher, string idCliente, int idProducto)
+        public void modificar(string voucher, int idCliente, int idProducto)
         {
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
@@ -81,7 +81,7 @@ namespace Negocio
                 conexion.ConnectionString = AccesoDatosManager.cadenaConexion;
                 comando.CommandType = System.Data.CommandType.Text;
                 //MSF-20190420: agregué todos los datos del heroe. Incluso su universo, que lo traigo con join.
-                comando.CommandText = "UPDATE[TP_WEB].[dbo].[Vouchers] SET IdCliente = @idCliente, IdProducto = @idProducto WHERE[TP_WEB].[dbo].[Vouchers].CodigoVoucher = @Voucher";
+                comando.CommandText = "UPDATE[TP_WEB].[dbo].[Vouchers] SET Estado=1, IdCliente = @idCliente, IdProducto = @idProducto WHERE[TP_WEB].[dbo].[Vouchers].CodigoVoucher = @Voucher";
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@idCliente", idCliente);
                 comando.Parameters.AddWithValue("@idProducto", idProducto);

@@ -13,6 +13,7 @@ namespace WebApplication
     public partial class DetallesCliente : System.Web.UI.Page
     {
         Producto producto;
+        Cliente clienteLocal;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,20 +32,19 @@ namespace WebApplication
 
         public void BuscarCUIT(object sender, EventArgs e)
         {
-            Cliente cliente;
             ClienteNegocio negocio = new ClienteNegocio();
             List<Cliente> listaClientes;
             listaClientes = negocio.listar();
-            cliente = listaClientes.Find(X => X.DNI == txtDNI.Text);
-            if (cliente != null)
+            clienteLocal = listaClientes.Find(X => X.DNI == txtDNI.Text);
+            if (clienteLocal != null)
             {
-                txtNombre.Text = cliente.Nombre.ToString();
-                txtApellido.Text = cliente.Apellido.ToString();
-                txtEmail.Text = cliente.Email.ToString();
-                txtDireccion.Text = cliente.Direccion.ToString();
-                txtCiudad.Text = cliente.Ciudad.ToString();
-                txtCodigoPostal.Text = cliente.CodigoPostal.ToString();
-                txtFechaRegistro.Text = cliente.FechaRegistro.ToShortDateString();
+                txtNombre.Text = clienteLocal.Nombre.ToString();
+                txtApellido.Text = clienteLocal.Apellido.ToString();
+                txtEmail.Text = clienteLocal.Email.ToString();
+                txtDireccion.Text = clienteLocal.Direccion.ToString();
+                txtCiudad.Text = clienteLocal.Ciudad.ToString();
+                txtCodigoPostal.Text = clienteLocal.CodigoPostal.ToString();
+                txtFechaRegistro.Text = clienteLocal.FechaRegistro.ToShortDateString();
             }
             else
             {
@@ -71,9 +71,24 @@ namespace WebApplication
             string voucher = Session["Voucher" + Session.SessionID].ToString();
             VoucherNegocio negocioVoucher = new VoucherNegocio();
             ClienteNegocio negocioCliente = new ClienteNegocio();
-            string idCliente = negocioCliente.traerIDCliente(txtDNI.Text);
 
-            negocioVoucher.modificar(voucher, idCliente, producto.ID);
+            if (clienteLocal == null)
+            {
+                clienteLocal = new Cliente();
+                clienteLocal.DNI = txtDNI.Text;
+                clienteLocal.Apellido = txtApellido.Text;
+                clienteLocal.Nombre = txtNombre.Text;
+                clienteLocal.Email = txtEmail.Text;
+                clienteLocal.Direccion = txtDireccion.Text;
+                clienteLocal.Ciudad = txtCiudad.Text;
+                clienteLocal.CodigoPostal = txtCodigoPostal.Text;
+                clienteLocal.FechaRegistro = Convert.ToDateTime(txtFechaRegistro.Text);
+
+                negocioCliente.agregar(clienteLocal);
+                clienteLocal.ID = Convert.ToInt32(negocioCliente.traerIDCliente(clienteLocal.DNI));
+            }
+
+            negocioVoucher.modificar(voucher, clienteLocal.ID, producto.ID);
             // CARGAR ID CLIENTE - ID PRODUCTO  - FECHA REGISTRO EN VOUCHER
         }
     }
