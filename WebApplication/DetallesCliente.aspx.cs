@@ -45,6 +45,7 @@ namespace WebApplication
                 txtCiudad.Text = clienteLocal.Ciudad.ToString();
                 txtCodigoPostal.Text = clienteLocal.CodigoPostal.ToString();
                 txtFechaRegistro.Text = clienteLocal.FechaRegistro.ToShortDateString();
+                Session["ClienteID" + Session.SessionID] = negocio.traerIDCliente(txtDNI.Text);
             }
             else
             {
@@ -71,10 +72,10 @@ namespace WebApplication
             string voucher = Session["Voucher" + Session.SessionID].ToString();
             VoucherNegocio negocioVoucher = new VoucherNegocio();
             ClienteNegocio negocioCliente = new ClienteNegocio();
+            clienteLocal = new Cliente();
 
-            if (clienteLocal == null)
+            if (Session["ClienteID" + Session.SessionID] == null)
             {
-                clienteLocal = new Cliente();
                 clienteLocal.DNI = txtDNI.Text;
                 clienteLocal.Apellido = txtApellido.Text;
                 clienteLocal.Nombre = txtNombre.Text;
@@ -86,6 +87,10 @@ namespace WebApplication
 
                 negocioCliente.agregar(clienteLocal);
                 clienteLocal.ID = Convert.ToInt32(negocioCliente.traerIDCliente(clienteLocal.DNI));
+            }
+            else
+            {
+                clienteLocal.ID = Convert.ToInt32(Session["ClienteID" + Session.SessionID]);
             }
 
             negocioVoucher.modificar(voucher, clienteLocal.ID, producto.ID);
